@@ -1,10 +1,10 @@
-    .globl asm_main
+# Instructions:
+# as -o bf.o bf.s
+# ld -o bf bf.o
+    .globl _start
     .text
 
-asm_main:
-    push %rbp
-    mov %rsp, %rbp
-
+_start:
     push $69
 
     mov $1, %rax
@@ -13,10 +13,9 @@ asm_main:
     mov $msglen, %rdx
     syscall
 
-    pop %rax
-
-    leave
-    ret
+    mov $60, %rax
+    pop %rdi
+    syscall
 
     .data
 
